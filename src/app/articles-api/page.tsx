@@ -18,7 +18,7 @@ export default function Page() {
     <main>
       <div>Route Handlerテスト</div>
       {articles.map((article) => (
-        <div>{article.title}</div>
+        <div key={article.id}>{article.title}</div>
       ))}
     </main>
   );
