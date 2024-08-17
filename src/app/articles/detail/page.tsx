@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { fetchArticlesAction } from "@/actions/fetchArticleAction";
 import { Article } from "@/types";
+
+export const dynamic = "force-dynamic";
 
 export default function Page() {
   const [id, setId] = useState(1);
@@ -24,7 +26,9 @@ export default function Page() {
 
       <button onClick={onClick}>fetch</button>
 
-      {article && <div>{article.title}</div>}
+      <Suspense fallback={<div>Loading...</div>}>
+        {article && <div>{article.title}</div>}
+      </Suspense>
     </main>
   );
 }

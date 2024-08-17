@@ -1,6 +1,8 @@
 "use client";
 import { Article } from "@/types";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+
+export const dynamic = "force-dynamic";
 
 export default function Page() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -17,9 +19,11 @@ export default function Page() {
   return (
     <main>
       <div>Route Handlerテスト</div>
-      {articles.map((article) => (
-        <div key={article.id}>{article.title}</div>
-      ))}
+      <Suspense fallback={<div>Loading...</div>}>
+        {articles.map((article) => (
+          <div key={article.id}>{article.title}</div>
+        ))}
+      </Suspense>
     </main>
   );
 }
