@@ -1,11 +1,16 @@
+import { fetchArticles } from "@/lib/fetcher/fetchArticles";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 export default async function Page() {
-  const response = await fetch("/api/test");
+  const articles = await fetchArticles();
 
   return (
     <main className={styles.main}>
-      <div>テスト</div>
+      <div>Home</div>
+      <Link href="/articles">articles</Link>
+
+      <Link href="/articles/detail">article detail</Link>
     </main>
   );
 }
