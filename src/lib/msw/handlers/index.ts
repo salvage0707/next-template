@@ -27,6 +27,3 @@ const articlesHandler = http.get<{ message: string }>(
 );
 
 export const handlers: RequestHandler[] = [articlesHandler];
-
-git remote add other git@github.com:salvage0707/app-router-msw.git
-git push -u other feature/msw-mock
