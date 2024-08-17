@@ -11,6 +11,8 @@ export default async function Page() {
       <Link href="/articles">articles</Link>
 
       <Link href="/articles/detail">article detail</Link>
+
+      <Link href="/articles-api">articles api</Link>
     </main>
   );
 }
