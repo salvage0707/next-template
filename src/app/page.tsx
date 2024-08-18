@@ -1,15 +1,15 @@
-import styles from "./page.module.css";
-import Link from "next/link";
+import { getTasks } from "../actions/task";
+import TasksPageContent from "@/components/TasksPageContent";
 
-export default async function Page() {
+export const dynamic = "force-dynamic";
+
+export default async function TasksPage() {
+  const tasks = await getTasks();
+
   return (
-    <main className={styles.main}>
-      <div>Home</div>
-      <Link href="/articles">articles</Link>
-
-      <Link href="/articles/detail">article detail</Link>
-
-      <Link href="/articles-api">articles api</Link>
-    </main>
+    <div className="p-4 max-w-xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">ToDo List</h1>
+      <TasksPageContent tasks={tasks} />
+    </div>
   );
 }
