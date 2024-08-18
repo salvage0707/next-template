@@ -1,0 +1,20 @@
+services:
+  mock-server:
+    image: mock-server:latest
+    build:
+      context: ./mock-server
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./mock-server/data:/data
+    command:
+      [
+        "json-server",
+        "--watch",
+        "db.json",
+        "--port",
+        "8000",
+        "--host",
+        "0.0.0.0",
+      ]
